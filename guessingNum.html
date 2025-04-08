@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #7b61ff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #7b61ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #5f47d1;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Guess the Number</h1>
+    <input id="GuessNumber" placeholder="Enter a number (1-10)">
+    <button onclick="check()">Check</button>
+    <p id="result">You are Wrong/Right</p>
+    <p id="score">Score: 10</p>
+  </div>
+
+  <script>
+    var guessNumber = document.getElementById("GuessNumber")
+    var result = document.getElementById("result")
+    var randomNumber = Math.floor(Math.random()*10)+1
+    var score = document.getElementById("score")
+    var totalScore = 10
+
+    function check(){
+      var enteredNumber = guessNumber.value 
+      if (randomNumber == enteredNumber){
+        console.log("Right")
+        result.textContent = "🎉 You guessed it right!"
+        alert("🎊 You won!")
+      }
+      else{
+        totalScore = totalScore - 1
+        score.textContent = "Score: " + totalScore
+        result.textContent = "❌ Wrong guess. Try again!"
+      }
+    }
+  </script>
+</body>
+</html>
